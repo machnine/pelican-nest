@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="{{DEFAULT_LANG}}">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="{{SITE_DESCRIPTION}}" />
+  <meta name="generator" content="Pelican {{PELICAN_VERSION}}" />
+
+  <title>{% block title %}| {{ SITENAME }}{% endblock %}</title>
+  <link rel="stylesheet" type="text/css" href="{{SITEURL}}/theme/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+  <link rel="stylesheet" type="text/css" href="{{SITEURL}}/theme/css/main.css" />
+  <link rel="canonical" href="{{ SITEURL }}/{{ output_file }}" />
+  {% block head %}{% endblock %}
+</head>
+<body>
+<header class="header">
+  <div class="px-3 py-2 bg-dark text-white text-small">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-center justify-content-lg-start align-items-center text-center">
+        <a class="d-flex my-2 my-lg-0 mx-auto text-decoration-none">{{SITENAME}}</a>
+        <ul class="nav col-12 col-lg-auto">
+          <li><a href="#" class="nav-link text-white"><span class="d-block"><i class="bi bi-house-door f-r15"></i></span>Home</a></li>
+          <li><a href="#" class="nav-link text-white"><span class="d-block"><i class="bi bi-folder f-r15"></i></span>Categories</a></li>
+          <li><a href="#" class="nav-link text-white"><span class="d-block"><i class="bi bi-file-person f-r15"></i></span>About</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+<main class="main">
+  {% block content %}Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eleifend nec ligula a sagittis. Duis non magna orci. Aenean porta ultrices nulla, eget posuere magna molestie sed. Vivamus congue mauris eu velit pharetra, ac condimentum massa fringilla. Duis auctor orci eget ex interdum faucibus. Praesent quis velit efficitur erat luctus dapibus a vitae purus. In porttitor metus augue, eget convallis neque hendrerit dignissim. Nullam aliquet diam eu turpis consectetur facilisis. Maecenas felis nunc, ultricies eu dolor in, bibendum semper est. Maecenas sit amet quam mauris. Duis consequat libero sed elit fringilla porta. Pellentesque dignissim, nunc quis pharetra vulputate, nisl quam hendrerit diam, id tincidunt metus dolor id elit. Interdum et malesuada fames ac ante ipsum primis in faucibus. In in hendrerit arcu. {% endblock content %}
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
+      <div class="d-flex col-md-4 align-items-center">
+        <a href="#" class="md-3 me-3 mb-md-0 text-muted text-decoration-none lh-1">Blah</a>
+        <span class="text-muted">&copy; {{SITENAME}}</span>
+      </div>
+      <ul class="d-flex nav col-md-4 justify-content-end list-unstyled">
+        {% for icon, color, link in ICON_LINKS %}
+        <li class="ms-3">
+          <a class="text-muted" {% if color %} style="color: #{{color}} !important;" {% endif %} href="{{link}}"><i class="bi bi-{{icon}} f-r15"></i></a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</footer>
+<script src="/theme/js/bootstrap.bundle.min.js"></script>
+<hr>
+
+categories:  {{categories}}
+pages: {{pages}}
+articles: {{articles}}
+dates: {{dates}}
+tags: {{tags}}
+
+
+</body>
+</html>

@@ -1,1 +1,12 @@
-ECHO is on.
+.f-r10 {
+    font-size: 1.0rem !important;
+}
+.f-r15 {
+    font-size: 1.5rem !important;
+}
+.f-r20 {
+    font-size: 2.0rem !important;
+}
+.f-r25 {
+    font-size: 2.5rem !important;
+}
