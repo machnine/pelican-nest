@@ -1,1 +1,30 @@
 
+
+{% extends('base.html') %}
+{% block content %}
+<h2><i class="bi bi-archive"></i> All Posts</h2>
+<div class="py-3">
+    {% for article in dates %}
+    <div class="row">
+      <div class="col-12 col-md-1 pt-2">
+        {% set year = article.date.strftime('%Y') %}
+        {% if loop.first %}
+          <a class="text-decoration-none" href="#{{year}}" title="Articles published in {{year}}"><h4 id="{{year}}">{{year}}</h4></a>
+        {% else %}
+          {% set prevyear = loop.previtem.date.strftime('%Y') %}
+          {% if prevyear != year %}
+            <a class="text-decoration-none" href="#{{year}}" title="Articles published in {{year}}"><h4 id="{{year}}">{{year}}</h4></a>
+          {% endif %}
+        {% endif %}
+      </div>
+      <div class="col-12 col-md-9 text-start py-md-2 border-bottom">
+        <a class="text-decoration-none" href="{{SITEURL}}/{{article.url}}" title="{{article.title}}">{{article.title}}</a>
+      </div>
+      <div class="d-none d-sm-inline col-md-2 py-md-2 text-end border-bottom">
+        <time class="small text-muted font-monospace" datetime="{{article.date.isoformat()}}">{{article.date|strftime('%d %b %Y')}}</time>
+      </div>
+    </div>
+    {% endfor %}
+    <div class="pb-5"></div>
+</div>
+{% endblock content %}

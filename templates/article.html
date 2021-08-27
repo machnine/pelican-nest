@@ -1,1 +1,27 @@
+{% extends 'base.html' %}
+{% from 'macros/metadata.j2' import smo_metadata %}
+{% block meta_tags %}
+{{smo_metadata(article)}}
+{% endblock meta_tags %}
+{% block content %}
+<h2>{{article.title}}</h2>
 
+<div class="row border-bottom pb-5">
+  <div class="col-12 text-muted small py-2">
+    <i class="bi bi-clock"></i> <span class="small">{{article.locale_date}}</span><br>
+  </div>
+  <div class="col-12 py-3">
+    {{article.content}}
+  </div>
+  <div class="col-12 col-lg-6 pb-lg-3">
+    <i class="bi bi-folder-fill text-warning"></i>
+      <a class="text-decoration-none" href="{{SITEURL}}/{{article.category.url}}">{{article.category}}</a>
+  </div>
+  <div class="col-12 col-lg-6 text-lg-end pb-lg-3">
+    <i class="bi bi-bookmarks-fill text-success"></i>
+    {% for tag in article.tags %}
+      <a class="text-decoration-none" href="{{SITEURL}}/{{tag.url}}">{{tag}}</a>{% if not loop.last %}<i class="bi bi-dot"></i>{% endif %}
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}

@@ -1,1 +1,42 @@
 
+
+{% extends('base.html') %}
+{% from 'macros/tags.j2' import tag_size %}
+{% block content %}
+<h2><i class="bi bi-bookmarks"></i> Tags</h2>
+<div class="py-3 px-5 mx-3">
+
+  {% set ns = namespace()%} {# global variable #}
+  {{tag_size(ns, tags)}} {# execute to update global #}
+  {% for tag, articles in tags | sort %}
+    {% set n = articles | length %}
+    <span class="pe-2 tag-scale-{{ (n // ns.unit) |int }}"> {# custom css scale 0-9 for tags #}
+      <a href="#tag-{{tag}}" title="Tag: {{tag}}">{{tag}}</a><span class="small text-muted" style="background-color: #ffffdf; border-radius: 25px; "> ({{articles | length }})</span>
+    </span>
+  {% endfor %}
+</div>
+<div class="py-3">
+
+{% for tag, articles in tags %}
+  <div class="row">
+    <div class="col-3 border-top">
+      <span class="f-r12" id="tag-{{tag}}"><a href="{{SITEURL}}/tag/{{tag}}.html" title="Tag: {{tag}}">{{tag}}</a></span>
+    </div>
+    <div class="col-9 border-top ps-5">
+      {% for article in articles %}
+      <div class="row py-2">
+        <div class="col-12 col-md-10">
+         <a href="{{SITEURL}}/{{article.url}}" title="{{article.title}}">{{article.title}}</a>
+        </div>
+        <div class="d-none d-md-inline col-md-2 text-muted">
+          <time class="small text-muted font-monospace" datetime="{{article.date.isoformat()}}">{{article.date|strftime('%d %b %Y')}}</time>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endfor %}
+</div>
+
+
+{% endblock content %}

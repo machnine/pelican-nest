@@ -5,31 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="{{SITE_DESCRIPTION}}" />
   <meta name="generator" content="Pelican {{PELICAN_VERSION}}" />
-
-  <title>{% block title %}| {{ SITENAME }}{% endblock %}</title>
+  {% block meta_tags %}{% endblock meta_tags %}
   <link rel="stylesheet" type="text/css" href="{{SITEURL}}/theme/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
   <link rel="stylesheet" type="text/css" href="{{SITEURL}}/theme/css/main.css" />
   <link rel="canonical" href="{{ SITEURL }}/{{ output_file }}" />
+  <title>{% block title %}| {{ SITENAME }}{% endblock %}</title>
   {% block head %}{% endblock %}
 </head>
 <body>
 <header class="header">
-  <div class="px-3 py-2 bg-dark text-white text-small">
+  <div class="px-3 py-0 text-white small" style="background-color: #464748;">
     <div class="container">
       <div class="d-flex flex-wrap justify-content-center justify-content-lg-start align-items-center text-center">
-        <a class="d-flex my-2 my-lg-0 mx-auto text-decoration-none">{{SITENAME}}</a>
-        <ul class="nav col-12 col-lg-auto">
-          <li><a href="#" class="nav-link text-white"><span class="d-block"><i class="bi bi-house-door f-r15"></i></span>Home</a></li>
-          <li><a href="#" class="nav-link text-white"><span class="d-block"><i class="bi bi-folder f-r15"></i></span>Categories</a></li>
-          <li><a href="#" class="nav-link text-white"><span class="d-block"><i class="bi bi-file-person f-r15"></i></span>About</a></li>
+        <a href="{{SITEURL}}/" class="d-flex my-2 my-lg-0 mx-auto text-decoration-none">{{SITENAME}}</a>
+        {# drop down menu shown only below -sm- #}
+        <div class="dropdown d-sm-none d-flex">
+          <a class="dropdown-toggle text-white text-decoration-none" href="#" id="dropdownMenuLink" data-bs-toggle="dropdown">
+            <i class="bi bi-list text-white"></i>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item small" href="{{SITEURL}}/categories.html" title="Categories" class="nav-link">Categories</a></li>
+            <li><a class="dropdown-item small" href="{{SITEURL}}/authors.html" title="Authors" class="nav-link">Authors</a></li>
+            <li><a class="dropdown-item small" href="{{SITEURL}}/archives.html" title="All posts" class="nav-link">Archives</a></li>
+            <li><a class="dropdown-item small" href="{{SITEURL}}/pages/about.html" title="About" class="nav-link">About</a></li>
+          </ul>
+        </div>
+        {# icon menu hidden below -sm- #}
+        <ul class="nav d-none d-sm-flex d-col-12 col-lg-auto">
+          <li><a href="{{SITEURL}}" title="Home page" class="nav-link text-white"><i class="bi bi-house-door f-r12 d-block"></i>Home</a></li>
+          <li><a href="{{SITEURL}}/categories.html" title="Categories" class="nav-link text-white"><i class="bi bi-folder2-open f-r12 d-block"></i>Categories</a></li>
+          <li><a href="{{SITEURL}}/tags.html" title="Tags" class="nav-link text-white"><i class="bi bi-bookmarks f-r12 d-block"></i>Tags</a></li>
+          <li><a href="{{SITEURL}}/authors.html" title="Authors" class="nav-link text-white"><i class="bi bi-people f-r12 d-block"></i>Authors</a></li>
+          <li><a href="{{SITEURL}}/archives.html" title="Archives" class="nav-link text-white"><i class="bi bi-archive f-r12 d-block"></i>Archives</a></li>
+          <li><a href="{{SITEURL}}/pages/about.html" title="About" class="nav-link text-white"><i class="bi bi-person f-r12 d-block"></i>About</a></li>
         </ul>
       </div>
     </div>
   </div>
 </header>
 <main class="main">
-  {% block content %}Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eleifend nec ligula a sagittis. Duis non magna orci. Aenean porta ultrices nulla, eget posuere magna molestie sed. Vivamus congue mauris eu velit pharetra, ac condimentum massa fringilla. Duis auctor orci eget ex interdum faucibus. Praesent quis velit efficitur erat luctus dapibus a vitae purus. In porttitor metus augue, eget convallis neque hendrerit dignissim. Nullam aliquet diam eu turpis consectetur facilisis. Maecenas felis nunc, ultricies eu dolor in, bibendum semper est. Maecenas sit amet quam mauris. Duis consequat libero sed elit fringilla porta. Pellentesque dignissim, nunc quis pharetra vulputate, nisl quam hendrerit diam, id tincidunt metus dolor id elit. Interdum et malesuada fames ac ante ipsum primis in faucibus. In in hendrerit arcu. {% endblock content %}
+  <div class="container pt-4">
+  {% block content %}
+  {% endblock content %}
+  </div>
 </main>
 <footer class="footer">
   <div class="container">
@@ -41,22 +60,21 @@
       <ul class="d-flex nav col-md-4 justify-content-end list-unstyled">
         {% for icon, color, link in ICON_LINKS %}
         <li class="ms-3">
-          <a class="text-muted" {% if color %} style="color: #{{color}} !important;" {% endif %} href="{{link}}"><i class="bi bi-{{icon}} f-r15"></i></a>
+          <a class="text-muted" {% if color %} style="color: #{{color}} !important;" {% endif %} href="{{link}}" title="{{icon}}"><i class="bi bi-{{icon}} f-r15"></i></a>
         </li>
         {% endfor %}
       </ul>
     </div>
+    <div class="col-12 pb-3 text-muted text-sm-center">
+      <span>Powered by</span>
+      <a href="https://www.python.org/" target="_blank" title="Python" class="ps-2"><img src="{{SITEURL}}/theme/images/python.png" width="16" height="16" /></a>
+      <a href="https://blog.getpelican.com/" target="_blank" title="Pelicon" class="ps-2"><img src="{{SITEURL}}/theme/images/getpelicon.png" width="16" height="16" /></a>
+      <a href="https://getbootstrap.com/" target="_blank" title="Bootstrap" class="ps-1"><img src="{{SITEURL}}/theme/images/bootstrap.png" width="20" height="20" /></a> 
+    </div>
   </div>
 </footer>
+
+        
 <script src="/theme/js/bootstrap.bundle.min.js"></script>
-<hr>
-
-categories:  {{categories}}
-pages: {{pages}}
-articles: {{articles}}
-dates: {{dates}}
-tags: {{tags}}
-
-
 </body>
 </html>

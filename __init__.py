@@ -15,5 +15,7 @@ icon_colors = {
     'whatsapp': '25D366',
 }
 
-def set_color(color: str) -> str:
-    return icon_colors.get(color, color)
+def color_icon(name, color=None, href='#'):
+    if not color:
+        color = name
+    return name, icon_colors.get(color, color), href

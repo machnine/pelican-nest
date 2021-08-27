@@ -1,5 +1,23 @@
+.f-r05 {
+    font-size: 0.5rem !important;
+}
+.f-r06 {
+    font-size: 0.625rem !important;
+}
+.f-r07 {
+    font-size: 0.750rem !important;
+}
+.f-r08 {
+    font-size: 0.8rem !important;
+}
+.f-r09 {
+    font-size: 0.9rem !important;
+}
 .f-r10 {
     font-size: 1.0rem !important;
+}
+.f-r12 {
+    font-size: 1.25rem !important;
 }
 .f-r15 {
     font-size: 1.5rem !important;
@@ -9,4 +27,46 @@
 }
 .f-r25 {
     font-size: 2.5rem !important;
+}
+
+
+a {
+    color: #464748;
+    text-decoration: none;
+  }
+
+a:hover {
+    color: #0300aa;
+    text-decoration: underline;
+  }
+
+  .tag-scale-0 {
+    font-size: 0.6rem !important;
+}
+.tag-scale-1 {
+    font-size: 0.7rem !important;
+}
+.tag-scale-2 {
+    font-size: 0.8rem !important;
+}
+.tag-scale-3 {
+    font-size:0.9rem !important;
+}
+.tag-scale-4 {
+    font-size: 1rem !important;
+}
+.tag-scale-5 {
+    font-size: 1.15rem  !important;
+}
+.tag-scale-6 {
+    font-size: 1.25rem !important;
+}
+.tag-scale-7 {
+    font-size: 1.5rem !important;
+}
+.tag-scale-8 {
+    font-size: 1.75rem !important;
+}
+.tag-scale-9 {
+    font-size: 2rem !important;
 }
