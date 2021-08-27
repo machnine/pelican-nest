@@ -1,6 +1,4 @@
-
-{% extends('base.html') %}
-{% block content %}
-<h3>{{tag.name}}</h3>
-
-{% endblock content %}
+{% extends 'article_list.html' %}
+{% block article_list_page_heading %}
+  <i class="bi bi-bookmark-fill text-success"></i>Tag: {{tag.name}}
+{% endblock article_list_page_heading %} 

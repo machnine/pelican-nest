@@ -18,7 +18,7 @@
   <div class="px-3 py-0 text-white small" style="background-color: #464748;">
     <div class="container">
       <div class="d-flex flex-wrap justify-content-center justify-content-lg-start align-items-center text-center">
-        <a href="{{SITEURL}}/" class="d-flex my-2 my-lg-0 mx-auto text-decoration-none">{{SITENAME}}</a>
+        <div class="d-flex my-2 my-lg-0 mx-auto f-r20"><i class="bi bi-columns-gap px-3"></i> {{SITENAME}}</div>
         {# drop down menu shown only below -sm- #}
         <div class="dropdown d-sm-none d-flex">
           <a class="dropdown-toggle text-white text-decoration-none" href="#" id="dropdownMenuLink" data-bs-toggle="dropdown">
@@ -59,7 +59,7 @@
       </div>
       <ul class="d-flex nav col-md-4 justify-content-end list-unstyled">
         {% for icon, color, link in ICON_LINKS %}
-        <li class="ms-3">
+        <li class="mx-3">
           <a class="text-muted" {% if color %} style="color: #{{color}} !important;" {% endif %} href="{{link}}" title="{{icon}}"><i class="bi bi-{{icon}} f-r15"></i></a>
         </li>
         {% endfor %}

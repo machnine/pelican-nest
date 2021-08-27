@@ -1,3 +1,5 @@
+@import url("pygments.css");
+
 .f-r05 {
     font-size: 0.5rem !important;
 }
@@ -40,7 +42,7 @@ a:hover {
     text-decoration: underline;
   }
 
-  .tag-scale-0 {
+.tag-scale-0 {
     font-size: 0.6rem !important;
 }
 .tag-scale-1 {

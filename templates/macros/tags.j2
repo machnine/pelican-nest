@@ -1,8 +1,11 @@
 {% macro tag_size(ns, tags, scale=10)%}
-  {% for tag, articles in tags|sort(attribute='articles') %}
+
+  {# sort the tag list by number of articles desc, and take the first item's articles count #}
+  {% for tag, articles in tags|sort(attribute='articles') %} 
     {% if loop.index == 1 %}
         {% set ns.max_tag = articles | length %}
     {% endif %}
   {% endfor %}
+  {# workout the unit for the scale #}
   {% set ns.unit = ns.max_tag / scale %}
 {% endmacro %}
