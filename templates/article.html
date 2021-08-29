@@ -21,15 +21,13 @@
   <div class="col-12 py-3">
     {{article.content}}
   </div>
-  <div class="col-12 col-lg-6 pb-lg-3">
+  <div class="col-12 pb-lg-3">
     <i class="bi bi-folder-fill text-warning"></i>
-      <a class="text-decoration-none" href="{{SITEURL}}/{{article.category.url}}">{{article.category}}</a>
-  </div>
-  <div class="col-12 col-lg-6 text-lg-end pb-lg-3">
+      <a class="text-decoration-none" href="{{SITEURL}}/{{article.category.url}}">{{article.category}}</a><br>
     <i class="bi bi-bookmarks-fill text-success"></i>
-    {% for tag in article.tags %}
-      <a class="text-decoration-none" href="{{SITEURL}}/{{tag.url}}">{{tag}}</a>{% if not loop.last %}<i class="bi bi-dot"></i>{% endif %}
-    {% endfor %}
+      {% for tag in article.tags %}
+        <a class="text-decoration-none" href="{{SITEURL}}/{{tag.url}}">{{tag}}</a>{% if not loop.last %}<i class="bi bi-dot"></i>{% endif %}
+      {% endfor %}
   </div>
 </div>
 {% endblock content %}

@@ -26,7 +26,7 @@
       {{articles_page.number}} / {{articles_paginator.num_pages}}
     {% endif %}
   </div>
-  <div class="col-4 text-end">
+  <div class="col-4 text-end text-right">
       {% if articles_next_page %}
       {% set next_number = articles_page.number + 1 %}
       <a href="{{SITEURL}}/{{articles_page.name}}{{next_number}}.html">Next Page <i class="bi bi-chevron-right"></i><i class="bi bi-chevron-right"></i></a>
