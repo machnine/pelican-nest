@@ -1,15 +1,15 @@
 @import url("pygments.css");
 
 :root {
-	--tag-scale-zero: 0.8rem;
-	--tag-scale-unit: 0.15rem;
-
+    --tag-scale-zero: 0.8rem;
+    --tag-scale-unit: 0.15rem;
+    --zcard-size: 280px;
 }
 a { color: #464748;
     text-decoration: none;}
 
 a:hover {  color: #0300aa;
-    	   text-decoration: underline;}
+           text-decoration: underline;}
 
 /* font size adjustment */
 .f-r05 {font-size: 0.5rem !important;}
@@ -36,87 +36,72 @@ a:hover {  color: #0300aa;
 .tag-scale-9 {font-size: calc(var(--tag-scale-zero) + (var(--tag-scale-unit) * 9)) !important;}
 
 
-/* blogzine front page featured cards */
-.card-grid .card-grid-lg {
-    height: 560px;
+/* imagezoom front page featured cards */
+
+.zcard {
+	width: 100%;				/* fill the whole allocated container */
+	overflow: hidden;			/* hide any oversize content bigger than this card - for the zoom effect */
+	border-radius: 0.8rem;		/* rounded corners */
+	position: relative;			/* setup for the child container to be absolute positioned inside */
 }
 
-.card-grid .card-grid-sm {
-	height: calc(280px - calc(1.5rem / 2));
+.zcard-lg {						/* vertical size of the zcards, for the bigger left panel */
+	height: calc(var(--zcard-size) * 2 + 20px);
 }
 
-.card.card-overlay-bottom::before {
+.zcard-sm {						/* vertical size of smaller right panels of the zcards*/
+	height: var(--zcard-size);
+}
+
+.zcard-body {						/* this element holds the background image */
+	height: 100%;					/* use this zcard-body to fill the entire parent container */
+	width: 100%;					/* as above */
+	background-position: center;	/* take the center portion of the background-image */
+	background-repeat: no-repeat;	/* only show once if the image is 'too small' */
+	background-size: cover;			/* resize the image to cover the entire container */
+	position: relative;				/* set position property for the ::after pseudo element */
+	z-index: 1;						/* behind the ::after layer */
+}
+
+.zcard-body::after{					/* psuedo element - this replicate the same background (in a different z-index) to zoom so it doesn't affect the other elements */
+	position: absolute;				/* absolute position to line up this background with the original one */
+	top: 0;
+	left: 0;
+	width: 100%;					/* full size */
+	height: 100%;					/* full size */
 	content: "";
+	background: inherit;			/* inherit the background settings */
+	transition: transform 0.5s ease;
+	z-index: 2;						/* between the base background layer and the zcard-bottom layer */
+}
+
+.zcard:hover .zcard-body::after{   /* zoom in slightly of the above psuedo element */
+	transform: scale(1.05);
+}
+
+.zcard-bottom {						/* bottom dark gradient for ease of show text */
 	position: absolute;
-	height: 50%;
+	bottom: 0;
+	left: 0;
+	height: 40%;
 	width: 100%;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(black));
-	background-image: linear-gradient(180deg, transparent, black);
-	z-index: 1;
-}
-
-.card.card-overlay-bottom{
-    overflow: hidden;
-}
-
-.card-bg-scale::after {
-	content: "";
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	background: inherit;
-	-webkit-transition: all 1s !important;
-	transition: all 1s !important;
-	z-index: -2;
-}
-
-.card-bg-scale {
-    z-index: 99;
+	color: white;				 
+	background-image: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(0, 0, 0, 1)); /* fake image as the gradient */
+	z-index: 3;						/* important  bring these elements to the front layer */
 }
 
 
-.card, .overflow-hidden {
-	will-change: transform;
+.zcard-link, .zcard-link > h2, .zcard-link > h4 {
+	color: white;
+	text-decoration: none;
 }
 
-.card-img-overlay {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 1.25rem;
-    border-radius: 0.7rem;
+.zcard-link.badge:hover {
+	color: white;
+	text-decoration: none;
 }
 
-.stretched-link::after {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	z-index: 1;
-	content: "";
-}
-
-.card {
-	position: relative;
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	-ms-flex-direction: column;
-	flex-direction: column;
-	min-width: 0;
-	word-wrap: break-word;
-	background-color: #fff;
-	background-clip: border-box;
-	border: 0 solid rgba(0, 0, 0, 0.1);
-	border-radius: 0.7rem;
+.zcard-link.d-block:hover {
+	color: white;
+	text-decoration: underline double white;
 }

@@ -1,64 +1,28 @@
-<section class="py-4 card-grid border-bottom">
+<section class="container px-0">
+  <div class="row">
 
-    <div class="row g-4">
-      <div class="col-lg-6 pb-4">
-        <div class="card card-overlay-bottom card-grid-lg card-bg-scale" 
-        style="background-image: url({{SITEURL}}/theme/images/03.jpg); background-position: center; background-size: cover;">
-          <div class="card-img-overlay d-flex align-items-center p-3 p-sm-4">
-            <div class="w-100 mt-auto">
-              <a class="badge bg-danger mb-2" href="#">Lifestyle</a>
-              <h2 class="text-white h1">
-                <a href="#" class="text-white stretched-link">Card with text overlaying on big image for the front page </a>
-              </h2>
-              <p class="text-white">Cras a elementum est. Fusce at fermentum neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi ullamcorper elementum mauris, sit amet gravida nulla rutrum vel. Donec fringilla nisl lacinia, dignissim arcu nec, tempor urna.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-6">
-        <div class="row g-4">
-          <div class="col-12 pb-4">
-            <div class="card card-overlay-bottom card-grid-sm card-bg-scale" style="background-image: url({{SITEURL}}/theme/images/02.jpg); background-position: center left; background-size: cover;">
-              <div class="card-img-overlay d-flex align-items-center p-5 p-sm-4">
-                <div class="w-100 mt-auto">
-                  <a class="badge bg-danger mb-2" href="#">Lifestyle</a>
-                  <h4 class="text-white">
-                    <a href="#" class="text-white stretched-link">Card 2 - Card with text overlaying on big image for the front page </a>
-                  </h4>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 pb-4">
-            <div class="card card-overlay-bottom card-grid-sm card-bg-scale" style="background-image: url({{SITEURL}}/theme/images/01.jpg); background-position: center left; background-size: cover;">
-              <div class="card-img-overlay d-flex align-items-center p-3 p-sm-4">
-                <div class="w-100 mt-auto">
-                  <a class="badge bg-info mb-2" href="#">Travel</a>
-                  <h4 class="text-white">
-                    <a href="#" class="text-white stretched-link">Card 3 - This is card number 3</a>
-                  </h4>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 pb-4">
-            <div class="card card-overlay-bottom card-grid-sm card-bg-scale" style="background-image: url({{SITEURL}}/theme/images/04.jpg); background-position: center left; background-size: cover;">
-              <div class="card-img-overlay d-flex align-items-center p-3 p-sm-4">
-                <div class="w-100 mt-auto">
-                  <a class="badge bg-success mb-2" href="#">Food</a>
-                  <h4 class="text-white">
-                    <a href="#" class="text-white stretched-link">Card 4 - Card number 4 goes here!</a>
-                  </h4>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
+    <div class="col-12 col-md-6">
+      {{zoomcard("lg", "theme/images/06.jpg", "Movies", "bg-primary", "#", "#",  "This is the card title movie category", "the summary of this article is quite long but if use template it's fine.")}}
     </div>
-  
+
+    <div class="col-12 col-md-6 pb-4">
+
+      <div class="row">
+        <div class="col-12 pb-4">
+          {{zoomcard("sm", "theme/images/03.jpg", "Travel",  "bg-danger", "#", "#", "This is the card title")}}
+        </div>
+      </div>
+
+      <div class="row">
+          <div class="col-12 col-md-6 pb-4">
+            {{zoomcard("sm", "theme/images/05.jpg", "Travel", "bg-warning", "#", "#",  "This is the card title")}}
+          </div>
+          <div class="col-12 col-md-6 pb-4">
+            {{zoomcard("sm", "theme/images/04.jpg", "Travel",  "bg-success", "#", "#", "This is the card title")}}
+          </div>
+      </div>
+
+    </div>
+
+  </div>  
 </section>

@@ -1,0 +1,15 @@
+{% macro zoomcard(zoom_size, bg_image, cat_name, cat_color, cat_link, card_link, card_title, card_summary='') %}
+  <div class="zcard zcard-{{zoom_size}}">
+    <div class="zcard-body zcard-scale" style="background-image: url({{SITEURL}}/{{bg_image}});">
+      <div class="zcard-bottom p-3">
+        <a class="zcard-link badge mb-2 {{cat_color}}" href="{{cat_link}}"><i class="bi bi-circle-fill"></i> {{cat_name}}</a>
+        <a class="zcard-link d-block {% if zoom_size == 'lg' %}h2{% else %}h4{% endif %}" href="{{card_link}}">
+            {{card_title}}
+        </a>
+        {% if card_summary %}
+          <p>{{card_summary}}</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endmacro %}
