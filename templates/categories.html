@@ -1,12 +1,15 @@
 
 {% extends('base.html') %}
+{% from 'macros/category.j2' import category_link %}
 {% block content %}
 <h2><i class="bi bi-folder-fill text-warning"></i> All Categories</h2>
 <div class="py-3">
 {% for category, articles in categories %}
   <div class="row">
     <div class="col-3 border-top">
-      <span class="f-r12"><a href="{{SITEURL}}/category/{{category}}.html" title="{{category}}">{{category}}</a></span>
+      <span class="f-r12">
+        {{category_link(category, CAT_COLOR)}}
+      </span>
       ({{articles | length}})
     </div>
     <div class="col-9 border-top ps-5">

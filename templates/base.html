@@ -34,12 +34,12 @@
         </div>
         {# icon menu hidden below -sm- #}
         <ul class="nav d-none d-sm-flex d-col-12 col-lg-auto">
-          <li><a href="{{SITEURL}}" title="Home page" class="nav-link text-white"><i class="bi bi-house-door f-r12 d-block"></i>Home</a></li>
-          <li><a href="{{SITEURL}}/categories.html" title="Categories" class="nav-link text-white"><i class="bi bi-folder2-open f-r12 d-block"></i>Categories</a></li>
-          <li><a href="{{SITEURL}}/tags.html" title="Tags" class="nav-link text-white"><i class="bi bi-bookmarks f-r12 d-block"></i>Tags</a></li>
-          <li><a href="{{SITEURL}}/authors.html" title="Authors" class="nav-link text-white"><i class="bi bi-people f-r12 d-block"></i>Authors</a></li>
-          <li><a href="{{SITEURL}}/archives.html" title="Archives" class="nav-link text-white"><i class="bi bi-archive f-r12 d-block"></i>Archives</a></li>
-          <li><a href="{{SITEURL}}/pages/about.html" title="About" class="nav-link text-white"><i class="bi bi-person f-r12 d-block"></i>About</a></li>
+          <li><a href="{{SITEURL}}" title="Home page" class="nav-link top-nav-link"><i class="bi bi-house-door"></i>Home</a></li>
+          <li><a href="{{SITEURL}}/categories.html" title="Categories" class="nav-link top-nav-link"><i class="bi bi-folder2-open"></i>Categories</a></li>
+          <li><a href="{{SITEURL}}/tags.html" title="Tags" class="nav-link top-nav-link"><i class="bi bi-bookmarks"></i>Tags</a></li>
+          <li><a href="{{SITEURL}}/authors.html" title="Authors" class="nav-link top-nav-link"><i class="bi bi-people"></i>Authors</a></li>
+          <li><a href="{{SITEURL}}/archives.html" title="Archives" class="nav-link top-nav-link"><i class="bi bi-archive"></i>Archives</a></li>
+          <li><a href="{{SITEURL}}/pages/about.html" title="About" class="nav-link top-nav-link"><i class="bi bi-person"></i>About</a></li>
         </ul>
       </div>
     </div>
@@ -60,8 +60,8 @@
       </div>
       <ul class="d-flex nav col-md-4 justify-content-end list-unstyled">
         {% for icon, color, link in ICON_LINKS %}
-        <li class="mx-3">
-          <a class="text-muted" {% if color %} style="color: #{{color}} !important;" {% endif %} href="{{link}}" title="{{icon}}"><i class="bi bi-{{icon}} f-r15"></i></a>
+        <li class="mx-2">
+          <a class="icon-link" {% if color %} style="color: #{{color}};" {% endif %} href="{{link}}" title="{{icon}}"><i class="bi bi-{{icon}} f-r15"></i></a>
         </li>
         {% endfor %}
       </ul>

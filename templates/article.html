@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% from 'macros/metadata.j2' import smo_metadata %}
+{% from 'macros/category.j2' import category_link %}
 {% block meta_tags %}
 {{smo_metadata(article)}}
 {% endblock meta_tags %}
@@ -8,26 +9,27 @@
 
 <div class="row border-bottom pb-5">
   <div class="col-12 text-muted small py-2">
-    <i class="bi bi-clock text-primary"></i> <span class="small pe-3">{{article.locale_date}}</span>
-    {% if article.authors | length == 1%}
-      <i class="bi bi-person text-primary"></i>
-    {% else %}
-      <i class="bi bi-people text-primary"></i>
-    {% endif %}
-    {% for author in article.authors %}
-      <span><a href="{{SITEURL}}/{{author.url}}" title="Articles written by {{author}}">{{author}}</a></span>{% if not loop.last %}, {% endif %}
-    {% endfor %}
+    <ul class="nav">
+      <li class="pe-2">{{category_link(article.category, CAT_COLOR)}}</li>
+      <li class="pe-2"  title="{{article.date|strftime('%Y-%m-%d %H:%M:%S')}}"><i class="bi bi-clock text-primary"></i> <span class="small">{{article.locale_date}}</span></li>
+      <li class="pe-2">{% if article.authors | length == 1%}
+        <i class="bi bi-person text-primary"></i>
+      {% else %}
+        <i class="bi bi-people text-primary"></i>
+      {% endif %}
+      {% for author in article.authors %}
+        <span><a href="{{SITEURL}}/{{author.url}}" title="Articles written by {{author}}">{{author}}</a></span>{% if not loop.last %}, {% endif %}
+      {% endfor %}</li>
+    </ul>
   </div>
   <div class="col-12 py-3">
     {{article.content}}
   </div>
   <div class="col-12 pb-lg-3">
-    <i class="bi bi-folder-fill text-warning"></i>
-      <a class="text-decoration-none" href="{{SITEURL}}/{{article.category.url}}">{{article.category}}</a><br>
     <i class="bi bi-bookmarks-fill text-success"></i>
-      {% for tag in article.tags %}
-        <a class="text-decoration-none" href="{{SITEURL}}/{{tag.url}}">{{tag}}</a>{% if not loop.last %}<i class="bi bi-dot"></i>{% endif %}
-      {% endfor %}
+    {% for tag in article.tags %}
+      <a class="text-decoration-none" href="{{SITEURL}}/{{tag.url}}">{{tag}}</a>{% if not loop.last %}<i class="bi bi-dot"></i>{% endif %}
+    {% endfor %}
   </div>
 </div>
 {% endblock content %}

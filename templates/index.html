@@ -1,6 +1,7 @@
 {% extends('base.html') %}
 {% block content %}
 {% from 'macros/zcard.j2' import zoomcard %}
+{% from 'macros/category.j2' import category_link %}
 {% if articles_page.number == 1 %}
   {% include 'includes/frontpage_feature_blogzine.html' %}
 {% endif %}
@@ -11,12 +12,11 @@
   </div>
   <div class="small text-muted pb-0">
     <ul class="nav">
+      <li class="pe-2">
+        {{ category_link(article.category, CAT_COLOR)}}
+      </li>
       <li class="pe-2" title="{{article.date|strftime('%Y-%m-%d %H:%M:%S')}}">
         <i class="bi bi-clock text-primary"></i> {{article.locale_date}}
-      </li>
-      <li class="pe-2">
-        <i class="bi bi-folder2-open text-warning"></i>
-        <a href="{{ SITEURL }}/{{ article.category.url }}">{{article.category}}</a>
       </li>
       {% if not HIDE_AUTHORS and article.authors %}
         <li class="pe-2">
@@ -34,7 +34,7 @@
 </div>
 {% endfor %}
 
-<div class="row py-3">
+<div class="row py-3 small">
   <div class="col-4 col-md-2 text-start">
     {% if articles_previous_page %}
       {% set prev_number = articles_page.number - 1 %}
@@ -47,7 +47,7 @@
       {{articles_page.number}} / {{articles_paginator.num_pages}}
     {% endif %}
   </div>
-  <div class="col-4 col-md-2 text-end text-right">
+  <div class="col-4 col-md-2 text-end">
     {% if articles_next_page %}
       {% set next_number = articles_page.number + 1 %}
       <a href="{{SITEURL}}/{{articles_page.name}}{{next_number}}.html">Next Page <i class="bi bi-chevron-right"></i><i class="bi bi-chevron-right"></i></a>

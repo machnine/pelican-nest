@@ -5,11 +5,36 @@
     --tag-scale-unit: 0.15rem;
     --zcard-size: 280px;
 }
-a { color: #464748;
-    text-decoration: none;}
 
-a:hover {  color: #0300aa;
-           text-decoration: underline;}
+a { 
+	color: #464748;
+    text-decoration: none;
+}
+
+a:hover {  
+	color: #0300aa;
+    text-decoration: underline;
+}
+
+
+/* top nav icons */
+.top-nav-link {
+	color: white;
+}
+
+.top-nav-link > i {
+	font-size: 1.2rem;
+	display: block;
+}
+
+.top-nav-link:hover > i {
+	color: orangered;
+}
+
+.top-nav-link:hover {
+	text-decoration: none;
+	color: white;
+}
 
 /* font size adjustment */
 .f-r05 {font-size: 0.5rem !important;}
@@ -36,7 +61,7 @@ a:hover {  color: #0300aa;
 .tag-scale-9 {font-size: calc(var(--tag-scale-zero) + (var(--tag-scale-unit) * 9)) !important;}
 
 
-/* imagezoom front page featured cards */
+/* blogzine zoom cards front page featured cards */
 
 .zcard {
 	width: 100%;				/* fill the whole allocated container */
@@ -101,7 +126,12 @@ a:hover {  color: #0300aa;
 	text-decoration: none;
 }
 
+.zcard-link{
+	text-shadow:  1px 1px 0 black;
+}
+
 .zcard-link.d-block:hover {
 	color: white;
 	text-decoration: underline double white;
 }
+

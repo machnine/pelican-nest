@@ -1,0 +1,6 @@
+{% macro category_link(cat_name, cat_color)%}
+  <a class="badge text-white" 
+    style="background-color: {{cat_color[cat_name]}};" 
+    href="{{ SITEURL }}/{{ cat_name.url }}">{{cat_name}}
+  </a>
+{% endmacro %}
