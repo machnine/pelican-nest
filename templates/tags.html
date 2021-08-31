@@ -4,8 +4,7 @@
 {% from 'macros/tags.j2' import tag_size %}
 {% block content %}
 <h2><i class="bi bi-bookmarks-fill text-success"></i> Tags</h2>
-<div class="py-3 px-5 mx-3">
-
+<div class="p-3 mx-3 border-top">
   {% set ns = namespace()%} {# global variable #}
   {{tag_size(ns, tags)}} {# execute to update global #}
   {% for tag, articles in tags | sort %}

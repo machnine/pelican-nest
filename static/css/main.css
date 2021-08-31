@@ -3,7 +3,7 @@
 :root {
     --tag-scale-zero: 0.8rem;
     --tag-scale-unit: 0.15rem;
-    --zcard-size: 280px;
+    --card-height: 280px;
 }
 
 a { 
@@ -71,11 +71,11 @@ a:hover {
 }
 
 .zcard-lg {						/* vertical size of the zcards, for the bigger left panel */
-	height: calc(var(--zcard-size) * 2 + 20px);
+	height: calc(var(--card-height) * 2 + 20px);
 }
 
 .zcard-sm {						/* vertical size of smaller right panels of the zcards*/
-	height: var(--zcard-size);
+	height: var(--card-height);
 }
 
 .zcard-body {						/* this element holds the background image */
@@ -122,7 +122,7 @@ a:hover {
 }
 
 .zcard-link.badge:hover {
-	color: white;
+	color: white !important;
 	text-decoration: none;
 }
 
@@ -131,7 +131,67 @@ a:hover {
 }
 
 .zcard-link.d-block:hover {
-	color: white;
+	color: white !important;
 	text-decoration: underline double white;
 }
 
+
+
+/* image box card */
+
+.icard {
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	height: var(--card-height);
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	border-radius: 0.8rem;
+	z-index: 1;
+}
+
+.icard::after{
+	content: "";
+	background: inherit;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	transition: all .5s;
+}
+
+.icard:hover.icard::after{
+	transform: scale(1.15);
+}
+
+.icard-content {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: calc(var(--card-height) / 3 * 2);
+	width: 100%;
+	background: linear-gradient(rgba(255,255,255,0), rgba(0,0,0,1));
+	z-index: 3;
+	padding: 1rem;
+	color: white;
+}
+
+.icard-link {
+	color: white !important;
+}
+
+.icard-link.icard-title{
+	text-shadow: 1px 1px 0 black, -1px 1px 0 black, 1px -1px 0 black, -1px -1px 0 black ;
+}
+
+.icard-link:hover.icard-title{
+	color: white !important;
+	text-decoration: underline double white;
+}
+
+.icard-link.icard-category{
+	background-color: orange;
+}
